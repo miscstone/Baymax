@@ -23,10 +23,7 @@
 
 <div id="mainDiv">
 	<div id="content">
-		<audio autoplay="autoplay" height="100" width="100">
-			<source src="https://vip.d0.baidupan.com/file/?BGIFOw8+BjcCCwI6U2ZcMFFuAztQYlY7CmJUPFEjBGgHdwBkCnFQYlJtBjwAMVwCWmkBYAJgATBXYgQ6VDoEPAQxBWQPawZ0AjICJ1M6XGRRMgMwUDpWbQo+VGpRKwR1B3cAagplUDRSNgZgAHtcbFoxASsCbAE7V38EO1RqBGcEPQVgDzcGNwJtAjdTYlw/UTkDNVA/VjUKPFQxUW4EMAc0ADYKNFBiUjcGZgBjXD5aZAFhAjsBM1dpBCxUZQR1BDcFdA8nBiECMQImU25cOVE2AzdQO1ZiCj1UYVE7BDQHIQAjCj5QaVJhBjYAaVxsWjYBNAJoATVXaAQ6VDEENwQ3BXwPfAZ0AjICOFNwXGBROwMgUHpWJAp6VG9RPAQzBzcAYgphUDxSMwZpAGZcbVomAXECNAFzV20EM1Q5BDcEKgVgD2cGfAJmAmZTNFxzUToDNlA4" type="audio/mp3" />
-			<embed height="100" width="100" src="https://vip.d0.baidupan.com/file/?BGIFOw8+BjcCCwI6U2ZcMFFuAztQYlY7CmJUPFEjBGgHdwBkCnFQYlJtBjwAMVwCWmkBYAJgATBXYgQ6VDoEPAQxBWQPawZ0AjICJ1M6XGRRMgMwUDpWbQo+VGpRKwR1B3cAagplUDRSNgZgAHtcbFoxASsCbAE7V38EO1RqBGcEPQVgDzcGNwJtAjdTYlw/UTkDNVA/VjUKPFQxUW4EMAc0ADYKNFBiUjcGZgBjXD5aZAFhAjsBM1dpBCxUZQR1BDcFdA8nBiECMQImU25cOVE2AzdQO1ZiCj1UYVE7BDQHIQAjCj5QaVJhBjYAaVxsWjYBNAJoATVXaAQ6VDEENwQ3BXwPfAZ0AjICOFNwXGBROwMgUHpWJAp6VG9RPAQzBzcAYgphUDxSMwZpAGZcbVomAXECNAFzV20EM1Q5BDcEKgVgD2cGfAJmAmZTNFxzUToDNlA4" />
-		</audio>
+		<audio loop src="https://vip.d0.baidupan.com/file/?AmRWaFprAzIACQY+AzZUOAY5V29WZAJvVz8EbFwuB2tXJ1UxWyACMAE+VG4CMwdZADMDYlU3BTRSZ1tlBWtRaQI3VjdaPgNxADAGIwNqVGwGZVdkVjwCOVdjBDpcJgd2VydVP1s0AmYBZVQyAnkHNwBrAylVOwU/UnpbZAU7UTICO1YzWmIDMgBvBjMDMlQ3Bm5XYVY5AmFXYQRhXGMHM1dkVWNbZQIwAWRUNAJhB2UAPgNjVWwFN1JsW3MFNFEgAjFWJ1pyAyQAMwYiAz5UMQZhV2NWPQI2V2AEMVw2BzdXcVV2W28COwEyVGQCawc3AGwDNlU/BTFSbFttBWBRZwIwVi9aKQNxADAGPAMgVGgGbVdkVjkCNVdmBDpcOQc+V29VNVsgAiMBJ1R1AmsHNwBsAzZVPwUxUm1bagVgUWICMlYnWnIDPgAmBm0DZlRkBm5XfFY7AjVXfgQwXDIHNVd5VTNbNgJh" id="audio" autoplay preload="auto">该浏览器不支持audio属性</audio>
 		<div id="code">
         	我很努力的<br />
             要成为一个</span><br />
@@ -78,6 +75,26 @@ together.setHours(12);
 together.setMinutes(0);
 together.setSeconds(0);
 together.setMilliseconds(0);
+
+//--创建页面监听，等待微信端页面加载完毕 触发音频播放
+document.addEventListener('DOMContentLoaded', function () {
+    function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+            audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.play();
+        }, false);
+    }
+    audioAutoPlay();
+});
+//--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
+document.addEventListener('touchstart', function () {
+    function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+            audio.play();
+    }
+    audioAutoPlay();
+});
 
 if (!document.createElement('canvas').getContext) {
 	var msg = document.createElement("div");
