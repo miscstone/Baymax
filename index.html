@@ -78,25 +78,6 @@ together.setMinutes(0);
 together.setSeconds(0);
 together.setMilliseconds(0);
 
-
-var music = document.getElementById('video');
-	  var state = 0;
-      document.addEventListener('touchstart', function(){    
-          if(state==0){        
-              music.play();        
-              state=1;    
-          }
-      }, false);
-      document.addEventListener("WeixinJSBridgeReady", function () {    
-          music.play();
-      }, false);
-      //循环播放
-      music.onended = function () {    
-          music.load();    
-          music.play();
-      }
-
-
 if (!document.createElement('canvas').getContext) {
 	var msg = document.createElement("div");
 	msg.id = "errorMsg";
@@ -119,6 +100,26 @@ if (!document.createElement('canvas').getContext) {
 	adjustCodePosition();
 	$("#code").typewriter();
 }
+
+var music = document.getElementById('video');
+	  var state = 0;
+      document.addEventListener('touchstart', function(){    
+          if(state==0){        
+              music.play();        
+              state=1;    
+          }
+      }, false);
+      document.addEventListener("WeixinJSBridgeReady", function () {    
+          music.play();
+      }, false);
+      //循环播放
+      music.onended = function () {    
+          music.load();    
+          music.play();
+      }
+
+
+
 </script>
 <div style="text-align:center;clear:both">
 <p>Made for Mrs.Right, made by <a href="https://github.com/enfangzhong" target="_blank">EnfangZhong<a /></p>
