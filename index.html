@@ -119,13 +119,18 @@ if (!document.createElement('canvas').getContext) {
 	$("#code").typewriter();
 }
 
-$('html').one('touchstart',function(){ 
-    document.getElementById('audios').play() 
-});
 
-$("body").one("touchstart",
-    document.getElementById('audios').play()
-});
+var audio = document.getElementById('audios');
+audio.oncanplay = playmusic();
+var firsttaped = 0;
+function playmusic(){
+    $('html').on('touchstart',function(){
+        if(firsttaped == 0){
+            audio.play();
+            firsttaped = 1;
+        }
+    });
+};
 
 </script>
 <div style="text-align:center;clear:both">
