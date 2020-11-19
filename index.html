@@ -119,25 +119,20 @@ if (!document.createElement('canvas').getContext) {
 	$("#code").typewriter();
 }
 
-var music = document.getElementById('video');
-	  var state = 0;
-      document.addEventListener('touchstart', function(){    
-          if(state==0){        
-              music.play();        
-              state=1;    
-          }
-      }, false);
-      document.addEventListener("WeixinJSBridgeReady", function () {    
-          music.play();
-      }, false);
-      //循环播放
-      music.onended = function () {    
-          music.load();    
-          music.play();
-      }
-
-
-
+var music = document.getElementById('audios');
+var state = 0;
+document.addEventListener('touchstart', function(){    
+    if(state==0){        
+        music.play();        
+        state=1;    
+    }
+}, false);
+document.addEventListener("WeixinJSBridgeReady", function () {    
+	if(state==0){
+		music.play();
+		state=1;
+	}
+}, false);
 </script>
 <div style="text-align:center;clear:both">
 <p>Made for Miss Chen, made by <a href="https://github.com/miscstone/Baymax" target="_blank">PengfeiSun<a /></p>
